@@ -1,5 +1,6 @@
 import {
   EXTERNAL_LINKS,
+  FEATURED_PROJECT_LINKS,
   SITE_URL,
   WHATSAPP_CONTACTS,
   createWhatsappLink,
@@ -11,6 +12,7 @@ const openWhatsappButton = document.querySelector('[data-open-whatsapp]');
 const copyLinkButton = document.querySelector('[data-copy-link]');
 const shareLinkButton = document.querySelector('[data-share-link]');
 const toast = document.querySelector('[data-toast]');
+const mobileViewport = window.matchMedia('(max-width: 760px)');
 let toastTimer;
 
 function showToast(message) {
@@ -72,9 +74,14 @@ function openWhatsappDialog() {
 function initializeExternalLinks() {
   document.querySelectorAll('[data-external-link]').forEach((link) => {
     const key = link.dataset.externalLink;
+    const url = key === 'featuredProject'
+      ? mobileViewport.matches
+        ? FEATURED_PROJECT_LINKS.mobile
+        : FEATURED_PROJECT_LINKS.desktop
+      : EXTERNAL_LINKS[key];
 
-    if (key in EXTERNAL_LINKS) {
-      link.href = EXTERNAL_LINKS[key];
+    if (url) {
+      link.href = url;
     }
   });
 }
@@ -97,7 +104,7 @@ function initializeDesktopMotion() {
   const isDesktop = window.matchMedia('(min-width: 761px)');
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  if (!isDesktop.matches || prefersReducedMotion.matches || !window.matchMedia('(pointer: fine)').matches) {
+  if (!isDesktop.matches || prefersReducedMotion.matches) {
     return;
   }
 
@@ -107,7 +114,7 @@ function initializeDesktopMotion() {
     document.body.classList.add('has-desktop-motion');
   });
 
-  if (!conversationPanel) {
+  if (!conversationPanel || !window.matchMedia('(pointer: fine)').matches) {
     return;
   }
 
@@ -128,6 +135,7 @@ function initializeDesktopMotion() {
 
 renderWhatsappOptions();
 initializeExternalLinks();
+mobileViewport.addEventListener('change', initializeExternalLinks);
 initializePointerGlow();
 initializeDesktopMotion();
 

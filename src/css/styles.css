@@ -438,6 +438,19 @@ h1 {
   pointer-events: none;
 }
 
+.conversation-panel::after {
+  position: absolute;
+  top: -18%;
+  bottom: -18%;
+  left: -28%;
+  width: 16%;
+  opacity: 0;
+  background: linear-gradient(90deg, transparent, rgba(216, 255, 69, 0.19), rgba(255, 253, 247, 0.08), transparent);
+  content: "";
+  pointer-events: none;
+  transform: skewX(-16deg) translateX(-260%);
+}
+
 .conversation-panel__serial {
   position: absolute;
   top: 27px;
@@ -1158,6 +1171,25 @@ h1 {
   }
 }
 
+@keyframes signal-sweep {
+  0%,
+  58%,
+  100% {
+    opacity: 0;
+    transform: skewX(-16deg) translateX(-260%);
+  }
+
+  12%,
+  36% {
+    opacity: 1;
+  }
+
+  42% {
+    opacity: 0;
+    transform: skewX(-16deg) translateX(1050%);
+  }
+}
+
 @media (min-width: 761px) and (prefers-reduced-motion: no-preference) {
   .has-desktop-motion .brand {
     animation: desktop-reveal-left 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -1185,6 +1217,10 @@ h1 {
 
   .has-desktop-motion .conversation-panel__orbit::after {
     animation: orbit-core-breathe 5.5s ease-in-out infinite;
+  }
+
+  .has-desktop-motion .conversation-panel::after {
+    animation: signal-sweep 7.8s 1.5s cubic-bezier(0.16, 1, 0.3, 1) infinite;
   }
 
   .has-desktop-motion .action-card--primary {

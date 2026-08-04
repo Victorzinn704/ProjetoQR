@@ -53,6 +53,16 @@ try {
 
   await desktop.goto(baseUrl, { waitUntil: 'networkidle' });
   await expectPageStructure(desktop, 1440);
+  await desktop.waitForFunction(() => document.body.classList.contains('has-desktop-motion'));
+  assert.equal(
+    await desktop.locator('[data-external-link="featuredProject"]').getAttribute('href'),
+    'https://app.deskimperial.online/design-lab/overview',
+  );
+  assert.notEqual(
+    await desktop.locator('.conversation-panel').evaluate((panel) => getComputedStyle(panel).animationName),
+    'none',
+    'O motion de entrada do desktop não foi ativado.',
+  );
   await desktop.locator('[data-open-whatsapp]').click();
   await assert.equal(await desktop.locator('#whatsapp-dialog').evaluate((dialog) => dialog.open), true);
   await assert.equal(await desktop.locator('.whatsapp-option').count(), 2);
@@ -64,6 +74,10 @@ try {
   await mobile.emulateMedia({ reducedMotion: 'reduce' });
   await mobile.goto(baseUrl, { waitUntil: 'networkidle' });
   await expectPageStructure(mobile, 375);
+  assert.equal(
+    await mobile.locator('[data-external-link="featuredProject"]').getAttribute('href'),
+    'https://app.deskimperial.online/app/owner',
+  );
   const transitionDuration = await mobile.locator('.action-card').first().evaluate((card) => getComputedStyle(card).transitionDuration);
   assert.ok(parseFloat(transitionDuration) <= 0.00001);
   await mobile.screenshot({ path: 'test-results/mobile.png', fullPage: true });

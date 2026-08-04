@@ -36,6 +36,8 @@ expect(styles.includes('prefers-reduced-motion'), 'A redução de movimento deve
 expect(styles.includes('overflow: hidden'), 'A interface deve controlar a rolagem no viewport.');
 expect(app.includes('navigator.share'), 'O compartilhamento nativo deve ser tratado.');
 expect(config.includes('https://wa.me/'), 'Os links de WhatsApp devem usar wa.me.');
+expect(config.includes('https://app.deskimperial.online/design-lab/overview'), 'O destino do projeto para desktop está ausente.');
+expect(config.includes('https://app.deskimperial.online/app/owner'), 'O destino do projeto para mobile está ausente.');
 
 if (failures.length > 0) {
   console.error('Falhas de verificação:');

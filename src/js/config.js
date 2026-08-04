@@ -23,7 +23,11 @@ export const WHATSAPP_CONTACTS = [
 export const EXTERNAL_LINKS = {
   linkedin: 'https://www.linkedin.com/in/jo%C3%A3ovictorcruz2000/',
   github: 'https://github.com/Victorzinn704',
-  featuredProject: 'https://app.deskimperial.online/app/owner',
+};
+
+export const FEATURED_PROJECT_LINKS = {
+  desktop: 'https://app.deskimperial.online/design-lab/overview',
+  mobile: 'https://app.deskimperial.online/app/owner',
 };
 
 export function createWhatsappLink(phone) {

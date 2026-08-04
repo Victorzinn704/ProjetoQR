@@ -5,6 +5,7 @@ import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 import {
   EXTERNAL_LINKS,
+  FEATURED_PROJECT_LINKS,
   SITE_URL,
   WHATSAPP_CONTACTS,
   WHATSAPP_MESSAGE,
@@ -31,7 +32,8 @@ test('mantém o destino publicado e os canais externos configurados', () => {
   assert.equal(SITE_URL, 'https://victorzinn704.github.io/ProjetoQR/');
   assert.match(EXTERNAL_LINKS.github, /^https:\/\/github\.com\//);
   assert.match(EXTERNAL_LINKS.linkedin, /^https:\/\/www\.linkedin\.com\//);
-  assert.equal(EXTERNAL_LINKS.featuredProject, 'https://app.deskimperial.online/app/owner');
+  assert.equal(FEATURED_PROJECT_LINKS.desktop, 'https://app.deskimperial.online/design-lab/overview');
+  assert.equal(FEATURED_PROJECT_LINKS.mobile, 'https://app.deskimperial.online/app/owner');
 });
 
 test('mantém o currículo em estado explícito de indisponibilidade', async () => {
