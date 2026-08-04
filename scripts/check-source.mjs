@@ -28,8 +28,10 @@ expect(html.includes('data-open-whatsapp'), 'O CTA de WhatsApp está ausente.');
 expect(html.includes('id="whatsapp-dialog"'), 'O diálogo de WhatsApp está ausente.');
 expect(html.includes('assets/qr-projetoqr.svg'), 'A imagem QR não está conectada ao layout.');
 expect(!html.includes('curriculo.pdf'), 'Não deve existir um currículo fictício.');
+expect(html.includes('class="contact-os"'), 'A interface centralizada está ausente.');
 expect(styles.includes(':focus-visible'), 'Estados de foco visíveis são obrigatórios.');
 expect(styles.includes('prefers-reduced-motion'), 'A redução de movimento deve ser respeitada.');
+expect(styles.includes('overflow: hidden'), 'A interface deve controlar a rolagem no viewport.');
 expect(app.includes('navigator.share'), 'O compartilhamento nativo deve ser tratado.');
 expect(config.includes('https://wa.me/'), 'Os links de WhatsApp devem usar wa.me.');
 

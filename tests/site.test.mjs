@@ -38,6 +38,6 @@ test('mantém o currículo em estado explícito de indisponibilidade', async () 
   const html = await readFile(resolve(projectRoot, 'src', 'index.html'), 'utf8');
 
   assert.match(html, /Currículo/);
-  assert.match(html, /Disponível em breve/);
+  assert.match(html, /em preparação/);
   assert.doesNotMatch(html, /curriculo\.pdf/i);
 });

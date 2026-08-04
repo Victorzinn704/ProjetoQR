@@ -1,12 +1,13 @@
 import assert from 'node:assert/strict';
 import { createServer } from 'node:http';
-import { readFile } from 'node:fs/promises';
+import { mkdir, readFile } from 'node:fs/promises';
 import { extname, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
 
 const projectRoot = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const outputDirectory = resolve(projectRoot, 'dist');
+const testResultsDirectory = resolve(projectRoot, 'test-results');
 const mimeTypes = {
   '.css': 'text/css; charset=utf-8',
   '.html': 'text/html; charset=utf-8',
@@ -36,6 +37,7 @@ const server = createServer(async (request, response) => {
 });
 
 await new Promise((resolveServer) => server.listen(0, '127.0.0.1', resolveServer));
+await mkdir(testResultsDirectory, { recursive: true });
 const address = server.address();
 const baseUrl = `http://127.0.0.1:${address.port}`;
 const browser = await chromium.launch({ headless: true });
@@ -81,5 +83,10 @@ async function expectPageStructure(page, viewportWidth) {
     await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
     true,
     `A página excede a largura do viewport de ${viewportWidth}px.`,
+  );
+  assert.equal(
+    await page.evaluate(() => document.documentElement.scrollHeight <= window.innerHeight),
+    true,
+    `A página excede a altura do viewport de ${viewportWidth}px.`,
   );
 }
