@@ -1294,6 +1294,14 @@ h1 {
   }
 }
 
+@media (min-width: 861px) and (min-height: 721px) {
+  .conversation-panel h2 {
+    max-width: 15ch;
+    font-size: clamp(2.2rem, 3.1vw, 3.25rem);
+    line-height: 0.94;
+  }
+}
+
 @media (min-width: 861px) {
   .portal-panel {
     box-shadow: -14px 0 34px rgba(0, 0, 0, 0.18);
