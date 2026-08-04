@@ -68,7 +68,7 @@ npm run generate:qr
 
 Para adicionar os ativos que ainda não existem:
 
-1. Troque o monograma em `src/index.html` pela foto final, mantendo um `alt` descritivo.
+1. A foto atual fica em `src/assets/joao-victor-cruz.png`; para substituí-la, mantenha um recorte quadrado e atualize o `alt` descritivo em `src/index.html`.
 2. Publique o PDF do currículo em `src/assets/`.
 3. Converta o card de currículo em link apenas depois de testar o PDF publicado.
 

@@ -18,6 +18,6 @@
 2. **[2026-08-04] Preserve approved interface regions during iterations**
    Do instead: treat user-marked green areas as locked and confine redesigns to the marked problem region unless a dependency requires a wider change.
 3. **[2026-08-04] Keep the profile honest while assets are pending**
-   Do instead: show a monogram avatar and a clear resume-unavailable state until the user supplies a photo or PDF.
+   Do instead: use `src/assets/joao-victor-cruz.png` for the current portrait and keep the resume-unavailable state until the user supplies a PDF.
 4. **[2026-08-04] Treat ProjetoQR as a separate product**
    Do instead: keep source, Git history, documentation, CI, and deployment independent from Desk Imperial.

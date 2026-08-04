@@ -21,12 +21,14 @@ const [html, styles, app, config] = await Promise.all([
 ]);
 
 await stat(sourcePath('assets', 'qr-projetoqr.svg'));
+await stat(sourcePath('assets', 'joao-victor-cruz.png'));
 
 expect(html.includes('<html lang="pt-BR">'), 'O documento deve declarar o idioma pt-BR.');
 expect(html.includes('meta name="viewport"'), 'O viewport responsivo está ausente.');
 expect(html.includes('data-open-whatsapp'), 'O CTA de WhatsApp está ausente.');
 expect(html.includes('id="whatsapp-dialog"'), 'O diálogo de WhatsApp está ausente.');
 expect(html.includes('assets/qr-projetoqr.svg'), 'A imagem QR não está conectada ao layout.');
+expect(html.includes('assets/joao-victor-cruz.png'), 'A foto profissional não está conectada ao avatar.');
 expect(!html.includes('curriculo.pdf'), 'Não deve existir um currículo fictício.');
 expect(html.includes('class="contact-os"'), 'A interface centralizada está ausente.');
 expect(styles.includes(':focus-visible'), 'Estados de foco visíveis são obrigatórios.');
