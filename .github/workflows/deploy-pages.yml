@@ -40,10 +40,13 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Validate source
-        run: npm run check && npm test && npm run test:ui
+        run: npm run check && npm test
 
       - name: Build static site
         run: npm run build
+
+      - name: Validate built interface
+        run: npm run test:ui
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

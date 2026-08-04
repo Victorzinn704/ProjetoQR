@@ -48,6 +48,7 @@ npm run generate:qr
 npm run check
 npm test
 npm run build
+npm run test:ui
 npm run preview
 ```
 
@@ -89,6 +90,7 @@ Antes de publicar, o projeto executa:
 npm run check
 npm test
 npm run build
+npm run test:ui
 ```
 
 Os testes validam os links de WhatsApp, a mensagem inicial, os destinos externos e o estado honesto do currículo. As verificações estáticas confirmam a presença do QR, do diálogo de contato, de foco visível e de respeito à preferência de movimento reduzido.
