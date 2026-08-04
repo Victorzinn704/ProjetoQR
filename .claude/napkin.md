@@ -21,3 +21,5 @@
    Do instead: use `src/assets/joao-victor-cruz.png` for the current portrait and keep the resume-unavailable state until the user supplies a PDF.
 4. **[2026-08-04] Treat ProjetoQR as a separate product**
    Do instead: keep source, Git history, documentation, CI, and deployment independent from Desk Imperial.
+5. **[2026-08-04] Keep professional copy factual and evidence-led**
+   Do instead: prefer specific responsibilities and use ` | ` between categories; avoid generic marketing language and decorative status labels.

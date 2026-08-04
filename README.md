@@ -1,8 +1,7 @@
 # ProjetoQR
 
-Cartão digital profissional de **João Victor Cruz**, pensado para QR code,
-eventos, networking e apresentações rápidas. A página transforma um scan em um
-contato por WhatsApp ou em uma visita aos canais profissionais relevantes.
+Interface profissional compacta de **João Victor Cruz** para acesso por QR code,
+com projetos, currículos, portfólio técnico e contato direto.
 
 ![Status](https://img.shields.io/badge/status-pronto%20para%20GitHub%20Pages-4A8CFF?style=flat-square)
 ![Stack](https://img.shields.io/badge/stack-HTML%20%2B%20CSS%20%2B%20JS-0C182C?style=flat-square)
@@ -10,7 +9,7 @@ contato por WhatsApp ou em uma visita aos canais profissionais relevantes.
 ## Princípios do projeto
 
 - **Direto ao ponto:** um único cartão, com ações reconhecíveis e hierarquia clara.
-- **Honesto:** usa monograma enquanto a foto não existe e informa que o currículo será publicado depois.
+- **Específico:** posiciona software, backend, dados e automação com links de evidência.
 - **Rápido:** é um site estático, sem framework, rastreador ou dependência em runtime.
 - **Acessível:** possui foco visível, HTML semântico, contraste alto e suporte a movimento reduzido.
 
@@ -21,8 +20,8 @@ contato por WhatsApp ou em uma visita aos canais profissionais relevantes.
 | WhatsApp | Escolha entre os dois números, com mensagem pronta. |
 | LinkedIn | Perfil profissional. |
 | GitHub | Repositórios e contribuições. |
-| Projeto em destaque | Design Lab da Desk Imperial. |
-| Currículo | Indicador explícito de disponibilidade futura. |
+| Projeto principal | Desk Imperial: produto, backend, dados e operação. |
+| Currículos & Portfólio | Currículo de Dados, Currículo de Software e Portfólio Técnico. |
 
 ## Estrutura
 
@@ -66,11 +65,10 @@ mudar, altere `SITE_URL` e execute novamente:
 npm run generate:qr
 ```
 
-Para adicionar os ativos que ainda não existem:
-
-1. A foto atual fica em `src/assets/joao-victor-cruz.png`; para substituí-la, mantenha um recorte quadrado e atualize o `alt` descritivo em `src/index.html`.
-2. Publique o PDF do currículo em `src/assets/`.
-3. Converta o card de currículo em link apenas depois de testar o PDF publicado.
+Os documentos e links estão centralizados em `src/js/config.js`. Os três PDFs
+publicados ficam em `src/assets/` e são abertos pelo modal **Currículos & Portfólio**.
+Para substituir uma versão, mantenha o nome do ativo ou atualize somente o
+respectivo `href` em `PROFESSIONAL_DOCUMENTS`.
 
 ## Publicação no GitHub Pages
 

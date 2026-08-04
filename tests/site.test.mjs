@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 import {
   EXTERNAL_LINKS,
   FEATURED_PROJECT_LINKS,
+  PROFESSIONAL_DOCUMENTS,
   SITE_URL,
   WHATSAPP_CONTACTS,
   WHATSAPP_MESSAGE,
@@ -36,10 +37,18 @@ test('mantém o destino publicado e os canais externos configurados', () => {
   assert.equal(FEATURED_PROJECT_LINKS.mobile, 'https://app.deskimperial.online/app/owner');
 });
 
-test('mantém o currículo em estado explícito de indisponibilidade', async () => {
+test('configura os três documentos profissionais sem caminhos inventados', async () => {
   const html = await readFile(resolve(projectRoot, 'src', 'index.html'), 'utf8');
 
-  assert.match(html, /Currículo/);
-  assert.match(html, /em preparação/);
-  assert.doesNotMatch(html, /curriculo\.pdf/i);
+  assert.equal(PROFESSIONAL_DOCUMENTS.length, 3);
+  assert.deepEqual(
+    PROFESSIONAL_DOCUMENTS.map((document) => document.href),
+    [
+      'assets/joao-victor-cruz-cv-dados-bi.pdf',
+      'assets/joao-victor-cruz-cv-software-engineer.pdf',
+      'assets/joao-victor-cruz-portfolio-tecnico.pdf',
+    ],
+  );
+  assert.match(html, /data-open-documents/);
+  assert.match(html, /id="documents-dialog"/);
 });

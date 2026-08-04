@@ -1,6 +1,7 @@
 import {
   EXTERNAL_LINKS,
   FEATURED_PROJECT_LINKS,
+  PROFESSIONAL_DOCUMENTS,
   SITE_URL,
   WHATSAPP_CONTACTS,
   createWhatsappLink,
@@ -8,7 +9,10 @@ import {
 
 const whatsappDialog = document.querySelector('#whatsapp-dialog');
 const whatsappOptions = document.querySelector('[data-whatsapp-options]');
+const documentsDialog = document.querySelector('#documents-dialog');
+const documentOptions = document.querySelector('[data-document-options]');
 const openWhatsappButton = document.querySelector('[data-open-whatsapp]');
+const openDocumentsButton = document.querySelector('[data-open-documents]');
 const copyLinkButton = document.querySelector('[data-copy-link]');
 const shareLinkButton = document.querySelector('[data-share-link]');
 const toast = document.querySelector('[data-toast]');
@@ -44,22 +48,59 @@ function copyText(text) {
 function renderWhatsappOptions() {
   const options = WHATSAPP_CONTACTS.map((contact) => {
     const link = document.createElement('a');
+    const content = document.createElement('span');
+    const channel = document.createElement('span');
+    const number = document.createElement('span');
     const hint = document.createElement('span');
 
     link.className = 'whatsapp-option';
     link.href = createWhatsappLink(contact.phone);
     link.target = '_blank';
     link.rel = 'noreferrer';
-    link.textContent = contact.label;
+    content.className = 'whatsapp-option__content';
+    channel.className = 'whatsapp-option__channel';
+    number.className = 'whatsapp-option__number';
+    channel.textContent = contact.channel;
+    number.textContent = contact.label;
+    content.append(channel, number);
 
     hint.className = 'whatsapp-option__hint';
     hint.textContent = 'Abrir WhatsApp ↗';
-    link.append(hint);
+    link.append(content, hint);
 
     return link;
   });
 
   whatsappOptions.replaceChildren(...options);
+}
+
+function renderDocumentOptions() {
+  const options = PROFESSIONAL_DOCUMENTS.map((documentItem) => {
+    const link = document.createElement('a');
+    const content = document.createElement('span');
+    const title = document.createElement('span');
+    const description = document.createElement('span');
+    const hint = document.createElement('span');
+
+    link.className = 'document-option';
+    link.href = documentItem.href;
+    link.target = '_blank';
+    link.rel = 'noreferrer';
+
+    content.className = 'document-option__content';
+    title.className = 'document-option__title';
+    description.className = 'document-option__description';
+    hint.className = 'document-option__hint';
+    title.textContent = documentItem.title;
+    description.textContent = documentItem.description;
+    hint.textContent = 'Abrir PDF ↗';
+    content.append(title, description);
+    link.append(content, hint);
+
+    return link;
+  });
+
+  documentOptions.replaceChildren(...options);
 }
 
 function openWhatsappDialog() {
@@ -69,6 +110,12 @@ function openWhatsappDialog() {
   }
 
   window.open(createWhatsappLink(WHATSAPP_CONTACTS[0].phone), '_blank', 'noreferrer');
+}
+
+function openDocumentsDialog() {
+  if (typeof documentsDialog.showModal === 'function') {
+    documentsDialog.showModal();
+  }
 }
 
 function initializeExternalLinks() {
@@ -134,17 +181,19 @@ function initializeDesktopMotion() {
 }
 
 renderWhatsappOptions();
+renderDocumentOptions();
 initializeExternalLinks();
 mobileViewport.addEventListener('change', initializeExternalLinks);
 initializePointerGlow();
 initializeDesktopMotion();
 
 openWhatsappButton.addEventListener('click', openWhatsappDialog);
+openDocumentsButton.addEventListener('click', openDocumentsDialog);
 
 copyLinkButton.addEventListener('click', async () => {
   try {
     await copyText(SITE_URL);
-    showToast('Link copiado. Agora é só compartilhar.');
+    showToast('Acesso copiado.');
   } catch {
     showToast('Não foi possível copiar automaticamente.');
   }
@@ -155,8 +204,8 @@ if (navigator.share) {
   shareLinkButton.addEventListener('click', async () => {
     try {
       await navigator.share({
-        title: 'João Victor Cruz | Cartão digital',
-        text: 'Contato profissional de João Victor Cruz.',
+        title: 'João Victor Cruz | Software, Dados & Automação',
+        text: 'Projetos, currículos e contato profissional de João Victor Cruz.',
         url: SITE_URL,
       });
     } catch (error) {
