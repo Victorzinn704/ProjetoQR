@@ -1150,7 +1150,7 @@ h1 {
   }
 }
 
-@media (min-width: 761px) and (prefers-reduced-motion: no-preference) {
+@media (min-width: 861px) and (prefers-reduced-motion: no-preference) {
   .has-desktop-motion .brand {
     animation: desktop-reveal-left 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
   }
@@ -1243,7 +1243,7 @@ h1 {
   }
 }
 
-@media (max-height: 720px) and (min-width: 761px) {
+@media (max-height: 720px) and (min-width: 861px) {
   .contact-os {
     height: calc(100dvh - 26px);
   }
@@ -1294,7 +1294,7 @@ h1 {
   }
 }
 
-@media (min-width: 761px) {
+@media (min-width: 861px) {
   .portal-panel {
     box-shadow: -14px 0 34px rgba(0, 0, 0, 0.18);
   }
@@ -1317,7 +1317,7 @@ h1 {
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 860px) {
   .atmosphere__orb {
     width: 90vw;
     height: 90vw;
@@ -1354,9 +1354,14 @@ h1 {
     padding: 0 5px;
   }
 
-  .brand__wordmark,
-  .topbar__desktop-context {
+  .brand__wordmark {
     display: none;
+  }
+
+  .topbar__desktop-context {
+    display: flex;
+    margin-left: auto;
+    font-size: 0.5rem;
   }
 
   .contact-stage {
@@ -1413,11 +1418,7 @@ h1 {
   }
 
   .identity-panel__meta {
-    display: grid;
-    gap: 4px;
-    margin: 0;
-    color: rgba(18, 18, 15, 0.68);
-    text-align: right;
+    display: none;
   }
 
   .identity-panel__meta span {
@@ -1563,7 +1564,7 @@ h1 {
   }
 }
 
-@media (max-width: 760px) and (max-height: 700px) {
+@media (max-width: 860px) and (max-height: 700px) {
   .contact-os {
     grid-template-rows: 34px minmax(0, 1fr);
     padding: 6px;
@@ -1650,6 +1651,15 @@ h1 {
 
   .qr-terminal__code img {
     max-width: 70px;
+  }
+}
+
+@media (max-width: 360px) {
+  .portal-actions .action-card__title {
+    overflow: visible;
+    line-height: 1.05;
+    text-overflow: clip;
+    white-space: normal;
   }
 }
 

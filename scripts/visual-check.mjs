@@ -120,7 +120,7 @@ try {
     await expectPageStructure(page, viewport.width);
     assert.equal(
       await page.locator('[data-external-link="featuredProject"]').getAttribute('href'),
-      viewport.width <= 760
+      viewport.width <= 860
         ? 'https://app.deskimperial.online/app/owner'
         : 'https://app.deskimperial.online/design-lab/overview',
     );
@@ -150,7 +150,7 @@ async function expectPageStructure(page, viewportWidth) {
     `A página excede a altura do viewport de ${viewportWidth}px.`,
   );
 
-  if (viewportWidth <= 760) {
+  if (viewportWidth <= 860) {
     const actionCardSizes = await page.locator('.portal-actions .action-card').evaluateAll((cards) =>
       cards.map((card) => {
         const bounds = card.getBoundingClientRect();

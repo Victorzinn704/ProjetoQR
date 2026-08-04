@@ -16,7 +16,7 @@ const openDocumentsButton = document.querySelector('[data-open-documents]');
 const copyLinkButton = document.querySelector('[data-copy-link]');
 const shareLinkButton = document.querySelector('[data-share-link]');
 const toast = document.querySelector('[data-toast]');
-const mobileViewport = window.matchMedia('(max-width: 760px)');
+const mobileViewport = window.matchMedia('(max-width: 860px)');
 let toastTimer;
 
 function showToast(message) {
@@ -148,7 +148,7 @@ function initializePointerGlow() {
 }
 
 function initializeDesktopMotion() {
-  const isDesktop = window.matchMedia('(min-width: 761px)');
+  const isDesktop = window.matchMedia('(min-width: 861px)');
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   if (!isDesktop.matches || prefersReducedMotion.matches) {
