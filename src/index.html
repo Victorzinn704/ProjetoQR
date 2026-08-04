@@ -30,12 +30,6 @@
           <span class="brand__mark">JV</span>
           <span class="brand__wordmark">contact / index</span>
         </a>
-        <div class="topbar__tools">
-          <span class="topbar__presence"><i></i> disponível para conversar</span>
-          <button class="share-button" type="button" data-share-link hidden>
-            compartilhar <span aria-hidden="true">↗</span>
-          </button>
-        </div>
       </header>
 
       <section class="contact-stage" id="contact-space" aria-label="Canais profissionais de João Victor Cruz">
@@ -94,8 +88,16 @@
 
         <aside class="portal-panel" aria-labelledby="portal-title">
           <header class="portal-panel__header">
-            <p class="portal-panel__eyebrow">rotas e referências</p>
-            <h2 id="portal-title">Portal de acesso</h2>
+            <div class="portal-panel__heading">
+              <p class="portal-panel__eyebrow">conexões / 04</p>
+              <h2 id="portal-title">Escolha uma rota.</h2>
+            </div>
+            <div class="portal-panel__tools">
+              <span class="portal-panel__presence"><i></i> online</span>
+              <button class="portal-share" type="button" data-share-link hidden aria-label="Compartilhar cartão digital">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 16V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13.5V20h14v-6.5" /></svg>
+              </button>
+            </div>
           </header>
 
           <div class="portal-panel__body">
@@ -114,9 +116,9 @@
                   </svg>
                 </span>
                 <span class="action-card__content">
-                  <span class="action-card__overline">work / 01</span>
+                  <span class="action-card__overline">projeto em destaque</span>
                   <span class="action-card__title">Design Lab</span>
-                  <span class="action-card__description">Desk Imperial em movimento</span>
+                  <span class="action-card__description">Desk Imperial · visão de produto</span>
                 </span>
                 <span class="action-card__arrow" aria-hidden="true">↗</span>
               </a>
@@ -164,7 +166,7 @@
             <section class="qr-terminal" aria-labelledby="qr-title">
               <div class="qr-terminal__copy">
                 <p class="qr-terminal__eyebrow">scan / save / connect</p>
-                <h3 id="qr-title">Leve este acesso.</h3>
+                <h3 id="qr-title">Salve meu cartão.</h3>
                 <button class="copy-button" type="button" data-copy-link>copiar link <span aria-hidden="true">→</span></button>
               </div>
               <div class="qr-terminal__code">

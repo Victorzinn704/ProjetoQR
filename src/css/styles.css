@@ -141,8 +141,6 @@ a {
 }
 
 .brand,
-.topbar__tools,
-.topbar__presence,
 .identity-panel__signal,
 .identity-panel__meta,
 .conversation-panel__annotation {
@@ -193,16 +191,7 @@ a {
   color: var(--paper-muted);
 }
 
-.topbar__tools {
-  gap: 14px;
-}
-
-.topbar__presence {
-  gap: 7px;
-  color: var(--paper-muted);
-}
-
-.topbar__presence i,
+.portal-panel__presence i,
 .annotation-dot {
   display: inline-block;
   width: 7px;
@@ -212,25 +201,10 @@ a {
   box-shadow: 0 0 0 5px rgba(216, 255, 69, 0.12);
 }
 
-.share-button,
 .copy-button {
   border: 0;
   color: inherit;
   background: transparent;
-}
-
-.share-button {
-  padding: 8px 10px;
-  border: 1px solid var(--line-light);
-  border-radius: 999px;
-  color: var(--white);
-  transition: border-color 160ms ease, color 160ms ease, transform 160ms ease;
-}
-
-.share-button:hover {
-  border-color: var(--lime);
-  color: var(--lime);
-  transform: translateY(-1px);
 }
 
 .contact-stage {
@@ -630,22 +604,43 @@ h1 {
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
   padding: clamp(19px, 2vw, 28px);
-  color: var(--ink);
-  background: var(--paper);
+  color: var(--white);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(185, 168, 255, 0.21), transparent 35%),
+    linear-gradient(145deg, #1c1c17, #10110f 77%);
+}
+
+.portal-panel::before {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: inherit;
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.08), transparent 26%);
+  content: "";
+  pointer-events: none;
+}
+
+.portal-panel > * {
+  position: relative;
+  z-index: 1;
 }
 
 .portal-panel__header {
   display: flex;
-  align-items: end;
+  align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding-bottom: 17px;
-  border-bottom: 1px solid var(--line-dark);
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line-light);
+}
+
+.portal-panel__heading {
+  min-width: 0;
 }
 
 .portal-panel__eyebrow {
-  margin-bottom: 0;
-  color: rgba(18, 18, 15, 0.52);
+  margin-bottom: 7px;
+  color: var(--lime);
 }
 
 .portal-panel h2 {
@@ -654,7 +649,58 @@ h1 {
   font-weight: 790;
   letter-spacing: -0.065em;
   line-height: 0.92;
-  text-align: right;
+  color: var(--white);
+}
+
+.portal-panel__tools,
+.portal-panel__presence {
+  display: flex;
+  align-items: center;
+}
+
+.portal-panel__tools {
+  gap: 8px;
+}
+
+.portal-panel__presence {
+  gap: 6px;
+  color: var(--paper-muted);
+  font-size: 0.55rem;
+  font-weight: 750;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.portal-panel__presence i {
+  width: 6px;
+  height: 6px;
+  box-shadow: 0 0 0 4px rgba(216, 255, 69, 0.12);
+}
+
+.portal-share {
+  display: grid;
+  place-items: center;
+  width: 29px;
+  height: 29px;
+  padding: 0;
+  border: 1px solid var(--line-light);
+  border-radius: 9px;
+  color: var(--white);
+  background: transparent;
+  transition: border-color 160ms ease, color 160ms ease, background-color 160ms ease, transform 160ms ease;
+}
+
+.portal-share svg {
+  width: 15px;
+  height: 15px;
+}
+
+.portal-share:hover,
+.portal-share:focus-visible {
+  border-color: var(--lime);
+  color: var(--ink);
+  background: var(--lime);
+  transform: translateY(-2px);
 }
 
 .portal-panel__body {
@@ -691,23 +737,27 @@ h1 {
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   padding: 12px;
-  border: 1px solid var(--line-dark);
+  border: 1px solid var(--line-light);
   border-radius: 13px;
-  color: var(--ink);
-  background: rgba(255, 253, 247, 0.4);
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.045);
   transition: border-color 180ms ease, transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
 }
 
 .portal-actions .interactive-card:hover,
 .portal-actions .interactive-card:focus-visible {
-  border-color: rgba(18, 18, 15, 0.58);
-  background: var(--white);
-  box-shadow: 5px 5px 0 var(--lilac);
+  border-color: rgba(216, 255, 69, 0.7);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 5px 5px 0 rgba(185, 168, 255, 0.45);
   transform: translate(-2px, -2px);
 }
 
 .action-card--project {
-  background: linear-gradient(110deg, #dad1ff, #b9a8ff 58%, #a88eff) !important;
+  color: var(--ink) !important;
+  background:
+    radial-gradient(circle at 92% 7%, rgba(255, 255, 255, 0.42), transparent 25%),
+    linear-gradient(130deg, #d5ccff, #a98ffe 61%, #9178e5) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.44);
 }
 
 .action-card__icon {
@@ -740,8 +790,8 @@ h1 {
 }
 
 .action-card__icon--resume {
-  color: var(--ink);
-  background: #d9d4ca;
+  color: var(--paper-muted);
+  background: rgba(255, 255, 255, 0.09);
 }
 
 .action-card__content {
@@ -752,7 +802,7 @@ h1 {
 
 .action-card__overline,
 .action-card__status {
-  color: rgba(18, 18, 15, 0.57);
+  color: var(--text-faint);
   font-size: 0.55rem;
 }
 
@@ -772,7 +822,7 @@ h1 {
 .action-card__description {
   overflow: hidden;
   margin-bottom: 0;
-  color: rgba(18, 18, 15, 0.59);
+  color: var(--paper-muted);
   font-size: clamp(0.64rem, 0.78vw, 0.75rem);
   line-height: 1.2;
   text-overflow: ellipsis;
@@ -780,7 +830,15 @@ h1 {
 }
 
 .action-card--disabled {
-  opacity: 0.56;
+  opacity: 0.47;
+}
+
+.action-card--project .action-card__overline {
+  color: rgba(18, 18, 15, 0.56);
+}
+
+.action-card--project .action-card__description {
+  color: rgba(18, 18, 15, 0.62);
 }
 
 .action-card__status {
@@ -792,9 +850,10 @@ h1 {
   grid-template-columns: minmax(0, 1fr) 128px;
   min-height: 114px;
   overflow: hidden;
-  border: 1px solid var(--line-dark);
+  border: 1px solid rgba(216, 255, 69, 0.72);
   border-radius: 15px;
-  background: var(--ink);
+  background: var(--lime);
+  box-shadow: 7px 7px 0 rgba(216, 255, 69, 0.14);
 }
 
 .qr-terminal__copy {
@@ -807,13 +866,13 @@ h1 {
 
 .qr-terminal__eyebrow {
   margin-bottom: 7px;
-  color: var(--lime);
+  color: rgba(18, 18, 15, 0.66);
   font-size: 0.52rem;
 }
 
 .qr-terminal h3 {
   margin-bottom: 10px;
-  color: var(--white);
+  color: var(--ink);
   font-size: 1rem;
   font-weight: 760;
   letter-spacing: -0.055em;
@@ -821,7 +880,7 @@ h1 {
 
 .copy-button {
   padding: 0;
-  color: var(--paper-muted);
+  color: rgba(18, 18, 15, 0.72);
   font-size: 0.67rem;
   font-weight: 730;
   letter-spacing: 0.02em;
@@ -829,7 +888,7 @@ h1 {
 
 .copy-button span {
   margin-left: 3px;
-  color: var(--lime);
+  color: var(--ink);
   transition: transform 160ms ease;
 }
 
