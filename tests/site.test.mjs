@@ -31,7 +31,7 @@ test('mantém o destino publicado e os canais externos configurados', () => {
   assert.equal(SITE_URL, 'https://victorzinn704.github.io/ProjetoQR/');
   assert.match(EXTERNAL_LINKS.github, /^https:\/\/github\.com\//);
   assert.match(EXTERNAL_LINKS.linkedin, /^https:\/\/www\.linkedin\.com\//);
-  assert.match(EXTERNAL_LINKS.featuredProject, /^https:\/\/app\.deskimperial\.online\//);
+  assert.equal(EXTERNAL_LINKS.featuredProject, 'https://app.deskimperial.online/app/owner');
 });
 
 test('mantém o currículo em estado explícito de indisponibilidade', async () => {

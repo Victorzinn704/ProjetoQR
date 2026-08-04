@@ -93,9 +93,43 @@ function initializePointerGlow() {
   });
 }
 
+function initializeDesktopMotion() {
+  const isDesktop = window.matchMedia('(min-width: 761px)');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  if (!isDesktop.matches || prefersReducedMotion.matches || !window.matchMedia('(pointer: fine)').matches) {
+    return;
+  }
+
+  const conversationPanel = document.querySelector('.conversation-panel');
+
+  window.requestAnimationFrame(() => {
+    document.body.classList.add('has-desktop-motion');
+  });
+
+  if (!conversationPanel) {
+    return;
+  }
+
+  conversationPanel.addEventListener('pointermove', (event) => {
+    const bounds = conversationPanel.getBoundingClientRect();
+    const offsetX = ((event.clientX - bounds.left) / bounds.width - 0.5) * 12;
+    const offsetY = ((event.clientY - bounds.top) / bounds.height - 0.5) * 12;
+
+    conversationPanel.style.setProperty('--orbit-x', `${offsetX.toFixed(2)}px`);
+    conversationPanel.style.setProperty('--orbit-y', `${offsetY.toFixed(2)}px`);
+  });
+
+  conversationPanel.addEventListener('pointerleave', () => {
+    conversationPanel.style.removeProperty('--orbit-x');
+    conversationPanel.style.removeProperty('--orbit-y');
+  });
+}
+
 renderWhatsappOptions();
 initializeExternalLinks();
 initializePointerGlow();
+initializeDesktopMotion();
 
 openWhatsappButton.addEventListener('click', openWhatsappDialog);
 
