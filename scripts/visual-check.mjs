@@ -4,6 +4,10 @@ import { mkdir, readFile } from 'node:fs/promises';
 import { extname, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
+import {
+  FEATURED_PROJECT_LINKS,
+  PROFESSIONAL_DOCUMENTS,
+} from '../src/js/config.js';
 
 const projectRoot = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const outputDirectory = resolve(projectRoot, 'dist');
@@ -58,7 +62,7 @@ try {
   await desktop.waitForFunction(() => document.body.classList.contains('has-desktop-motion'));
   assert.equal(
     await desktop.locator('[data-external-link="featuredProject"]').getAttribute('href'),
-    'https://app.deskimperial.online/design-lab/overview',
+    FEATURED_PROJECT_LINKS.desktop,
   );
   assert.notEqual(
     await desktop.locator('.conversation-panel').evaluate((panel) => getComputedStyle(panel).animationName),
@@ -75,11 +79,11 @@ try {
   await assert.equal(await desktop.locator('.document-option').count(), 3);
   await assert.equal(
     await desktop.locator('.document-option').first().getAttribute('href'),
-    'assets/joao-victor-cruz-cv-dados-bi.pdf',
+    PROFESSIONAL_DOCUMENTS[0].href,
   );
   await desktop.keyboard.press('Escape');
   await assert.equal(await desktop.locator('#documents-dialog').evaluate((dialog) => dialog.open), false);
-  const documentResponse = await desktop.request.get(`${baseUrl}/assets/joao-victor-cruz-cv-dados-bi.pdf`);
+  const documentResponse = await desktop.request.get(`${baseUrl}/${PROFESSIONAL_DOCUMENTS[0].href}`);
   assert.equal(documentResponse.status(), 200);
   await desktop.screenshot({ path: 'test-results/desktop.png', fullPage: true });
   assert.deepEqual(desktopErrors, []);
@@ -90,7 +94,7 @@ try {
   await expectPageStructure(mobile, 375);
   assert.equal(
     await mobile.locator('[data-external-link="featuredProject"]').getAttribute('href'),
-    'https://app.deskimperial.online/app/owner',
+    FEATURED_PROJECT_LINKS.mobile,
   );
   await mobile.locator('[data-open-documents]').click();
   await assert.equal(await mobile.locator('#documents-dialog').evaluate((dialog) => dialog.open), true);
@@ -121,8 +125,8 @@ try {
     assert.equal(
       await page.locator('[data-external-link="featuredProject"]').getAttribute('href'),
       viewport.width <= 860
-        ? 'https://app.deskimperial.online/app/owner'
-        : 'https://app.deskimperial.online/design-lab/overview',
+        ? FEATURED_PROJECT_LINKS.mobile
+        : FEATURED_PROJECT_LINKS.desktop,
     );
     assert.deepEqual(errors, []);
     await page.close();
@@ -136,6 +140,11 @@ try {
 
 async function expectPageStructure(page, viewportWidth) {
   assert.equal(await page.locator('h1').count(), 1);
+  assert.equal(
+    await page.evaluate(() => !document.documentElement.innerHTML.includes('{{')),
+    true,
+    'O HTML publicado não pode conter tokens de template.',
+  );
   assert.equal(await page.locator('.action-card').count(), 5);
   assert.equal(await page.locator('img[alt*="QR code"]').count(), 1);
   assert.equal(await page.locator('[data-open-documents]').count(), 1);

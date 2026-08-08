@@ -4,6 +4,9 @@
   "private": true,
   "description": "Cartão digital profissional publicado no GitHub Pages.",
   "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "build": "node scripts/build.mjs",
     "check": "node scripts/check-source.mjs",

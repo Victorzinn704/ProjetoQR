@@ -1,45 +1,27 @@
 # ProjetoQR
 
-Interface profissional compacta de **João Victor Cruz** para acesso por QR code,
-com projetos, currículos, portfólio técnico e contato direto.
+Cartão digital profissional, estático e responsivo para GitHub Pages. Reúne contato direto, projetos, documentos e QR code em uma única interface.
 
-![Status](https://img.shields.io/badge/status-pronto%20para%20GitHub%20Pages-4A8CFF?style=flat-square)
-![Stack](https://img.shields.io/badge/stack-HTML%20%2B%20CSS%20%2B%20JS-0C182C?style=flat-square)
+[Ver demonstração](https://victorzinn704.github.io/ProjetoQR/) · [Usar como template](https://github.com/Victorzinn704/ProjetoQR/generate) · [Personalizar o perfil](docs/CUSTOMIZATION.md)
 
-## Princípios do projeto
+![Prévia do ProjetoQR em desktop](docs/images/preview.png)
 
-- **Direto ao ponto:** um único cartão, com ações reconhecíveis e hierarquia clara.
-- **Específico:** posiciona software, backend, dados e automação com links de evidência.
-- **Rápido:** é um site estático, sem framework, rastreador ou dependência em runtime.
-- **Acessível:** possui foco visível, HTML semântico, contraste alto e suporte a movimento reduzido.
+## Recursos
 
-## Canais disponíveis
+- Layout em viewport único, adaptado para desktop, tablet e celular.
+- QR code gerado localmente a partir da URL pública.
+- WhatsApp com seleção de canais e mensagem inicial configurável.
+- Links de projeto, LinkedIn, GitHub e documentos profissionais.
+- Foto de perfil, compartilhamento nativo, foco visível e suporte a movimento reduzido.
+- Build estático, sem dependências em runtime e pronto para GitHub Pages.
 
-| Ação | Destino |
-| --- | --- |
-| WhatsApp | Escolha entre os dois números, com mensagem pronta. |
-| LinkedIn | Perfil profissional. |
-| GitHub | Repositórios e contribuições. |
-| Projeto principal | Desk Imperial: produto, backend, dados e operação. |
-| Currículos & Portfólio | Currículo de Dados, Currículo de Software e Portfólio Técnico. |
+## Use como template
 
-## Estrutura
-
-```text
-ProjetoQR/
-├── src/
-│   ├── assets/       # QR code gerado localmente
-│   ├── css/          # Sistema visual e responsividade
-│   ├── js/           # Configuração e interações
-│   └── index.html    # Estrutura semântica da página
-├── scripts/          # Build, QR e verificações estáticas
-├── tests/            # Testes de configuração e conteúdo
-└── .github/workflows # Deploy contínuo para GitHub Pages
-```
-
-## Desenvolvimento local
-
-Requer Node.js 22 ou superior.
+1. Clique em **Use this template** no GitHub ou abra o link acima.
+2. Crie seu repositório e clone-o localmente.
+3. Edite `src/js/config.js` com nome, textos, links, WhatsApp e URL publicada.
+4. Substitua foto e documentos em `src/assets/`, mantendo os nomes configurados.
+5. Gere o QR code, valide e publique.
 
 ```bash
 npm install
@@ -48,47 +30,35 @@ npm run check
 npm test
 npm run build
 npm run test:ui
-npm run preview
 ```
 
-`npm run preview` serve a versão final na pasta `dist/`. O QR deve apontar para
-`https://victorzinn704.github.io/ProjetoQR/` quando o repositório público se
-chamar `ProjetoQR` na conta `Victorzinn704`.
+O guia completo de configuração, fotos, documentos e GitHub Pages está em `docs/CUSTOMIZATION.md`.
 
-## Configuração
+## Estrutura
 
-Os links, os dois números de WhatsApp e a mensagem estão centralizados em
-`src/js/config.js`. Se o nome do repositório, a conta do GitHub ou a URL final
-mudar, altere `SITE_URL` e execute novamente:
-
-```bash
-npm run generate:qr
+```text
+ProjetoQR/
+├── src/
+│   ├── assets/       # Foto, QR code e documentos publicados
+│   ├── css/          # Sistema visual e responsividade
+│   ├── js/           # Configuração do perfil e interações
+│   └── index.html    # Template HTML renderizado no build
+├── docs/             # Prévia e guia de personalização
+├── scripts/          # Geração do QR, build e verificações
+├── tests/            # Testes de configuração
+└── .github/workflows # Deploy contínuo para GitHub Pages
 ```
 
-Os documentos e links estão centralizados em `src/js/config.js`. Os três PDFs
-publicados ficam em `src/assets/` e são abertos pelo modal **Currículos & Portfólio**.
-Para substituir uma versão, mantenha o nome do ativo ou atualize somente o
-respectivo `href` em `PROFESSIONAL_DOCUMENTS`.
+## Publicação
 
-## Publicação no GitHub Pages
+O workflow `.github/workflows/deploy-pages.yml` executa geração do QR, verificações, build e testes de interface em cada push na branch `main`.
 
-O workflow `.github/workflows/deploy-pages.yml` gera o QR, executa as
-verificações, cria `dist/` e publica cada push para `main`.
-
-1. Crie um repositório público chamado `ProjetoQR` em `Victorzinn704`.
-2. Envie este projeto para a branch `main`.
-3. Em **Settings → Pages**, confirme **Source: GitHub Actions** se o GitHub ainda não tiver selecionado isso automaticamente.
-4. Acompanhe a execução em **Actions → Deploy GitHub Pages**.
+Em **Settings → Pages**, selecione **Source: GitHub Actions**. A URL padrão é `https://<usuario>.github.io/<repositorio>/`; atualize `SITE_URL` antes de gerar o QR quando a conta ou repositório mudar.
 
 ## Qualidade
 
-Antes de publicar, o projeto executa:
+`npm run check` valida estrutura, assets e acessibilidade básica. `npm test` valida a configuração. `npm run test:ui` abre o build em múltiplos viewports e testa os fluxos essenciais.
 
-```bash
-npm run check
-npm test
-npm run build
-npm run test:ui
-```
+## Licença
 
-Os testes validam os links de WhatsApp, a mensagem inicial, os destinos externos e o estado honesto do currículo. As verificações estáticas confirmam a presença do QR, do diálogo de contato, de foco visível e de respeito à preferência de movimento reduzido.
+Distribuído sob a [licença MIT](LICENSE).

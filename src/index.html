@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Portfólio profissional de João Victor Cruz com projetos em software, backend, APIs, dados, BI e automação."
+      content="{{SEO_DESCRIPTION}}"
     />
     <meta name="theme-color" content="#12120f" />
-    <meta property="og:title" content="João Victor Cruz | Software, Dados & Automação" />
+    <meta property="og:title" content="{{SEO_TITLE}}" />
     <meta
       property="og:description"
-      content="Projetos, currículos e contato profissional nas áreas de software, dados e automação."
+      content="{{OG_DESCRIPTION}}"
     />
     <meta property="og:type" content="website" />
-    <title>João Victor Cruz | Software, Dados & Automação</title>
+    <title>{{SEO_TITLE}}</title>
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
@@ -26,39 +26,39 @@
 
     <main class="contact-os" aria-labelledby="profile-name">
       <header class="topbar">
-        <a class="brand" href="#contact-space" aria-label="João Victor Cruz, perfil profissional">
-          <span class="brand__mark">JV</span>
+        <a class="brand" href="#contact-space" aria-label="{{PROFILE_NAME}}, perfil profissional">
+          <span class="brand__mark">{{PROFILE_INITIALS}}</span>
           <span class="brand__wordmark">Software | Dados | Automação</span>
         </a>
         <div class="topbar__desktop-context">
-          <span class="topbar__segment">Rio de Janeiro | Brasil</span>
+          <span class="topbar__segment">{{PROFILE_LOCATION}}</span>
         </div>
       </header>
 
-      <section class="contact-stage" id="contact-space" aria-label="Canais profissionais de João Victor Cruz">
+      <section class="contact-stage" id="contact-space" aria-label="Canais profissionais de {{PROFILE_NAME}}">
         <aside class="identity-panel">
           <div class="avatar">
             <img
               class="avatar__photo"
-              src="assets/joao-victor-cruz.png"
-              alt="Retrato profissional de João Victor Cruz"
-              width="768"
-              height="768"
+              src="{{AVATAR_SRC}}"
+              alt="{{AVATAR_ALT}}"
+              width="{{AVATAR_WIDTH}}"
+              height="{{AVATAR_HEIGHT}}"
             />
             <span class="avatar__frame" aria-hidden="true"></span>
           </div>
 
           <div class="identity-panel__copy">
-            <p class="identity-panel__eyebrow">João Victor Cruz</p>
-            <h1 id="profile-name">Software<br />Engineer</h1>
-            <p class="identity-panel__focus">Backend | Dados | Automação</p>
+            <p class="identity-panel__eyebrow">{{PROFILE_NAME}}</p>
+            <h1 id="profile-name">{{ROLE_LINE_ONE}}<br />{{ROLE_LINE_TWO}}</h1>
+            <p class="identity-panel__focus">{{PROFILE_SPECIALTIES}}</p>
             <p class="identity-panel__summary">
-              Desenvolvo APIs, integrações, automações e pipelines de dados para extrair, tratar e disponibilizar informações, conectando backend aos processos operacionais.
+              {{PROFILE_SUMMARY}}
             </p>
           </div>
 
           <div class="identity-panel__meta">
-            <span>Rio de Janeiro | Brasil</span>
+            <span>{{PROFILE_LOCATION}}</span>
           </div>
         </aside>
 
@@ -68,21 +68,21 @@
           </div>
 
           <div class="conversation-panel__content">
-            <p class="kicker">Contato profissional</p>
-            <h2 id="conversation-title">Software, dados e automação aplicados a problemas reais.</h2>
+            <p class="kicker">{{CONTACT_EYEBROW}}</p>
+            <h2 id="conversation-title">{{CONTACT_HEADLINE}}</h2>
             <p class="conversation-panel__summary">
-              Conheça meus projetos, currículos e experiência técnica ou entre em contato diretamente.
+              {{CONTACT_SUMMARY}}
             </p>
 
             <button class="action-card action-card--primary interactive-card" type="button" data-open-whatsapp>
-              <span class="action-card__overline">Contato direto</span>
-              <span class="action-card__title">Falar pelo WhatsApp</span>
+              <span class="action-card__overline">{{CONTACT_ACTION_OVERLINE}}</span>
+              <span class="action-card__title">{{CONTACT_ACTION_LABEL}}</span>
               <span class="action-card__arrow" aria-hidden="true">↗</span>
             </button>
 
             <div class="conversation-panel__annotation">
               <span class="annotation-dot" aria-hidden="true"></span>
-              <span>Mensagem pré-preenchida</span>
+              <span>{{CONTACT_ACTION_NOTE}}</span>
             </div>
           </div>
         </section>
@@ -90,11 +90,11 @@
         <aside class="portal-panel" aria-labelledby="portal-title">
           <header class="portal-panel__header">
             <div class="portal-panel__heading">
-              <p class="portal-panel__eyebrow">Portfólio profissional</p>
-              <h2 id="portal-title">Projetos e referências.</h2>
+              <p class="portal-panel__eyebrow">{{PORTFOLIO_EYEBROW}}</p>
+              <h2 id="portal-title">{{PORTFOLIO_TITLE}}</h2>
             </div>
             <div class="portal-panel__tools">
-              <button class="portal-share" type="button" data-share-link hidden aria-label="Compartilhar perfil profissional">
+              <button class="portal-share" type="button" data-share-link hidden aria-label="Compartilhar perfil de {{PROFILE_NAME}}">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 16V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13.5V20h14v-6.5" /></svg>
               </button>
             </div>
@@ -104,7 +104,7 @@
             <div class="portal-actions">
               <a
                 class="action-card action-card--project interactive-card"
-                href="https://app.deskimperial.online/design-lab/overview"
+                href="{{FEATURED_PROJECT_DESKTOP_URL}}"
                 target="_blank"
                 rel="noreferrer"
                 data-external-link="featuredProject"
@@ -116,40 +116,40 @@
                   </svg>
                 </span>
                 <span class="action-card__content">
-                  <span class="action-card__overline">projeto em destaque</span>
-                  <span class="action-card__title">Desk Imperial</span>
-                  <span class="action-card__description">Produto | Backend | Dados | Operação</span>
+                  <span class="action-card__overline">{{FEATURED_PROJECT_EYEBROW}}</span>
+                  <span class="action-card__title">{{FEATURED_PROJECT_TITLE}}</span>
+                  <span class="action-card__description">{{FEATURED_PROJECT_DESCRIPTION}}</span>
                 </span>
                 <span class="action-card__arrow" aria-hidden="true">↗</span>
               </a>
 
               <a
                 class="action-card interactive-card"
-                href="https://www.linkedin.com/in/jo%C3%A3ovictorcruz2000/"
+                href="{{LINKEDIN_URL}}"
                 target="_blank"
                 rel="noreferrer"
                 data-external-link="linkedin"
-                aria-label="Abrir LinkedIn de João Victor Cruz"
+                aria-label="Abrir LinkedIn de {{PROFILE_NAME}}"
               >
                 <span class="action-card__icon action-card__icon--linkedin" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5.2 3.6A1.9 1.9 0 1 1 5.2 7.4a1.9 1.9 0 0 1 0-3.8ZM3.6 8.8h3.2V20H3.6V8.8Zm5.2 0h3.1v1.5h.1c.5-.8 1.5-1.9 3.5-1.9 3.7 0 4.4 2.4 4.4 5.6v6h-3.2v-5.3c0-1.3 0-3-1.9-3s-2.2 1.4-2.2 2.9V20H8.8V8.8Z" /></svg>
                 </span>
-                <span class="action-card__content"><span class="action-card__title">LinkedIn</span><span class="action-card__description">Experiência | Formação | Atuação</span></span>
+                <span class="action-card__content"><span class="action-card__title">LinkedIn</span><span class="action-card__description">{{LINKEDIN_DESCRIPTION}}</span></span>
                 <span class="action-card__arrow" aria-hidden="true">↗</span>
               </a>
 
               <a
                 class="action-card interactive-card"
-                href="https://github.com/Victorzinn704"
+                href="{{GITHUB_URL}}"
                 target="_blank"
                 rel="noreferrer"
                 data-external-link="github"
-                aria-label="Abrir GitHub de João Victor Cruz"
+                aria-label="Abrir GitHub de {{PROFILE_NAME}}"
               >
                 <span class="action-card__icon action-card__icon--github" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.9c-2.8.6-3.4-1.2-3.4-1.2-.4-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.8.9.1-.6.4-1.1.6-1.3-2.3-.3-4.7-1.1-4.7-5A3.8 3.8 0 0 1 6.3 9c-.1-.3-.4-1.2.1-2.5 0 0 .8-.3 2.7 1A9.4 9.4 0 0 1 12 7.1c1 0 2 .1 2.9.4 1.9-1.3 2.7-1 2.7-1 .5 1.3.2 2.2.1 2.5a3.8 3.8 0 0 1 1 2.6c0 3.8-2.3 4.6-4.6 4.9.4.3.7.9.7 1.8V21c0 .3.2.6.7.5A10 10 0 0 0 12 2Z" /></svg>
                 </span>
-                <span class="action-card__content"><span class="action-card__title">GitHub</span><span class="action-card__description">APIs | Dados | Automação | Projetos</span></span>
+                <span class="action-card__content"><span class="action-card__title">GitHub</span><span class="action-card__description">{{GITHUB_DESCRIPTION}}</span></span>
                 <span class="action-card__arrow" aria-hidden="true">↗</span>
               </a>
 
@@ -157,21 +157,21 @@
                 <span class="action-card__icon action-card__icon--resume" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6M8 13h8M8 17h5" /></svg>
                 </span>
-                <span class="action-card__content"><span class="action-card__title">Currículos &amp; Portfólio</span><span class="action-card__description">Dados | Software | Portfólio Técnico</span></span>
+                <span class="action-card__content"><span class="action-card__title">{{DOCUMENTS_ACTION_TITLE}}</span><span class="action-card__description">{{DOCUMENTS_ACTION_DESCRIPTION}}</span></span>
                 <span class="action-card__arrow" aria-hidden="true">↗</span>
               </button>
             </div>
 
             <section class="qr-terminal" aria-labelledby="qr-title">
               <div class="qr-terminal__copy">
-                <p class="qr-terminal__eyebrow">Acesso rápido</p>
-                <h3 id="qr-title">Salve este perfil.</h3>
-                <button class="copy-button" type="button" data-copy-link>Copiar acesso <span aria-hidden="true">→</span></button>
+                <p class="qr-terminal__eyebrow">{{QR_EYEBROW}}</p>
+                <h3 id="qr-title">{{QR_TITLE}}</h3>
+                <button class="copy-button" type="button" data-copy-link>{{QR_ACTION_LABEL}} <span aria-hidden="true">→</span></button>
               </div>
               <div class="qr-terminal__code">
                 <img
-                  src="assets/qr-projetoqr.svg"
-                  alt="QR code para abrir o cartão digital de João Victor Cruz"
+                  src="{{QR_SRC}}"
+                  alt="{{QR_ALT}}"
                   width="164"
                   height="164"
                 />

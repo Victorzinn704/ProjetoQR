@@ -1,6 +1,7 @@
 import {
   EXTERNAL_LINKS,
   FEATURED_PROJECT_LINKS,
+  PROFILE,
   PROFESSIONAL_DOCUMENTS,
   SITE_URL,
   WHATSAPP_CONTACTS,
@@ -204,8 +205,8 @@ if (navigator.share) {
   shareLinkButton.addEventListener('click', async () => {
     try {
       await navigator.share({
-        title: 'João Victor Cruz | Software, Dados & Automação',
-        text: 'Projetos, currículos e contato profissional de João Victor Cruz.',
+        title: PROFILE.metadata.title,
+        text: PROFILE.metadata.socialDescription,
         url: SITE_URL,
       });
     } catch (error) {

@@ -2,11 +2,11 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import QRCode from 'qrcode';
-import { SITE_URL } from '../src/js/config.js';
+import { ASSETS, SITE_URL } from '../src/js/config.js';
 
 const scriptDirectory = dirname(fileURLToPath(import.meta.url));
 const outputDirectory = resolve(scriptDirectory, '..', 'src', 'assets');
-const outputFile = resolve(outputDirectory, 'qr-projetoqr.svg');
+const outputFile = resolve(outputDirectory, ASSETS.qr.src.replace(/^assets\//, ''));
 
 const qrMarkup = await QRCode.toString(SITE_URL, {
   type: 'svg',
